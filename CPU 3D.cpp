@@ -28,7 +28,7 @@ int main() {
     camera.rot = { 0, 0 };
     camera.moveSpeed = 20;
 
-    Terrain vec(16);
+    Terrain vec({4, 8, 16, 24});
 
 
     sf::Clock clock;

@@ -5,7 +5,8 @@
 #include <algorithm>
 
 sf::Vector2f project(sf::Vector3f pos, const sf::RenderWindow& window, const Camera& camera) {
-    sf::Vector2f screenPos(dot(normalize(pos - camera.pos), camera.right), dot(normalize(pos - camera.pos), camera.up));
+    sf::Vector3f dir = normalize(pos - camera.pos);
+    sf::Vector2f screenPos(dot(dir, camera.right) / std::max(dot(dir, camera.forward), 0.0001f), dot(dir, camera.up) / std::max(dot(dir, camera.forward), 0.0001f));
     screenPos *= PI / camera.FOV;
     screenPos.y *= -1;
 
